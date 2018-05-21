@@ -1,3 +1,6 @@
+# ignore .rds files for the moment
+*.rds
+
 # directory with code/data to try run Hodgson et al. id algorithm
 hodgson_counts/
 
@@ -41,3 +44,7 @@ vignettes/*.pdf
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
 
+# ignore intermediate processing files
+nest_counts/Nest counts/
+nest_counts/nest_kmls/
+nest_counts/Nest counts.7z
