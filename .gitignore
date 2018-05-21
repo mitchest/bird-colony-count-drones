@@ -1,3 +1,9 @@
+# directory with code/data to try run Hodgson et al. id algorithm
+hodgson_counts/
+
+# leave out paper files for now
+manuscript/
+
 # History files
 .Rhistory
 .Rapp.history
@@ -34,3 +40,4 @@ vignettes/*.pdf
 
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
+
