@@ -12,20 +12,20 @@ The basic concept is as such:
 
 A small extract from one colony is below, to give a flavour of the study sites - this is a nice simple example with pretty consistent targets.
 
-## Orthomosaic:
-- ~3 cm RGB drone imagery, processed via Pix4D
-![Alt text](readme/ortho.jpg?raw=true "orthomosaic")
+### Orthomosaic:
+- ~3 cm RGB drone imagery, processed via Pix4D  
+![](bird-colony-count-drones/readme/ortho.jpg?raw=true "orthomosaic")
 
-## Manual counting
-- All visible nests were counted, a small proportion of which is used for training image classifiers
-![Alt text](readme/nest_dots.jpg?raw=true "nest counts")
+### Manual counting
+- All visible nests were counted, a small proportion of which is used for training image classifiers  
+![](readme/nest_dots.jpg?raw=true "nest counts")
 
-## Nest/bird classificaiton
-- Nest material and birds classified
-![Alt text](readme/nest_class.jpg?raw=true "nest counts")
+### Nest/bird classificaiton
+- Nest material and birds classified  
+![](readme/nest_class.jpg?raw=true "nest counts")
 
-## Nest count estimation
+### Nest count estimation
 - The mapped areas are then used - again using a small proportion of the maunally coutned nest data as training - to estimate the parameter of interest: the number of nests
 - We are trying to maximise the accuracy of the counts, and minimise the amount of manual effort
-- Note these reuslts are not finalised yet
-![Alt text](readme/nest_est.jpg?raw=true "nest counts")
+- Note these reuslts are not finalised yet  
+![](readme/nest_est.jpg?raw=true "nest counts")
