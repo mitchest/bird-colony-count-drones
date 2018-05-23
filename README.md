@@ -14,7 +14,7 @@ A small extract from one colony is below, to give a flavour of the study sites -
 
 ### Orthomosaic:
 - ~3 cm RGB drone imagery, processed via Pix4D  
-![](bird-colony-count-drones/readme/ortho.jpg?raw=true "orthomosaic")
+![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_class.JPG)
 
 ### Manual counting
 - All visible nests were counted, a small proportion of which is used for training image classifiers  
