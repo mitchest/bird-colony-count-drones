@@ -14,18 +14,18 @@ A small extract from one colony is below, to give a flavour of the study sites -
 
 ### Orthomosaic:
 - ~3 cm RGB drone imagery, processed via Pix4D  
-![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_class.JPG)
+![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/ortho.JPG)
 
 ### Manual counting
 - All visible nests were counted, a small proportion of which is used for training image classifiers  
-![](readme/nest_dots.jpg?raw=true "nest counts")
+![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_dots.JPG)
 
 ### Nest/bird classificaiton
 - Nest material and birds classified  
-![](readme/nest_class.jpg?raw=true "nest counts")
+![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_class.JPG)
 
 ### Nest count estimation
 - The mapped areas are then used - again using a small proportion of the maunally coutned nest data as training - to estimate the parameter of interest: the number of nests
 - We are trying to maximise the accuracy of the counts, and minimise the amount of manual effort
 - Note these reuslts are not finalised yet  
-![](readme/nest_est.jpg?raw=true "nest counts")
+![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_est.JPG)
