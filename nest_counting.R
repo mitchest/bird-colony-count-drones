@@ -11,48 +11,59 @@ source("nest_counting_functions.R")
 
 # load nest data ----------------------------------------------------------
 
-merrimajeel <- read.csv("nest_counts/merrimajeel_nests_50m.csv", stringsAsFactors = F) %>%
-  na.omit() %>%
-  rename(nest_count = Species) %>%
-  filter(net_area == 2500) %>%
-  mutate(nest_area_ratio = nest_area / nest_count,
-         crowd_ratio = net_area / nest_area) %>%
-  filter(crowd_ratio < 200) %>%
-  mutate(crowd_bin = ntile(crowd_ratio, 8))
+merrimajeel <- read_fishnet_data("nest_counts/fishnet_counts/merrimajeel_rf_data.csv", 
+                                 area_thresh = 2400, crowd_thresh = 200, crown_bins = 8)
+blockb <- read_fishnet_data("nest_counts/fishnet_counts/blockb_rf_data.csv",
+                            area_thresh = 1500, crowd_thresh = 200, crown_bins = 4)
+maczoo <- read_fishnet_data("nest_counts/fishnet_counts/maczoo_rf_data.csv",
+                            area_thresh = 2400, crowd_thresh = 1000, crown_bins = 8)
+eulimbah <- read_fishnet_data("nest_counts/fishnet_counts/eulimbah_rf_data.csv",
+                              area_thresh = 1500, crowd_thresh = 200, crown_bins = 4)
 
 
 
-# merrimajeel -------------------------------------------------------------
 
-## straight up area ratio
-# merrimajeel_estimates <- bind_cols(lapply(1:221, estimate_nest_counts, 1000, merrimajeel))
-# saveRDS(merrimajeel_estimates, file = "merrimajeel_estimates.rds")
-merrimajeel_estimates <- readRDS("merrimajeel_estimates.rds")
-merrimajeel_estimates_long <- gather(merrimajeel_estimates)
-merrimajeel_estimates_long$samples <- as.numeric(unlist(lapply(merrimajeel_estimates_long$key, function(x) strsplit(x, "_")[[1]][2])))
-plot_nest_estimates(merrimajeel_estimates_long, merrimajeel, 0.05)
+# crunch the numbers for each colony --------------------------------------
 
-## model nest area and crowdedness
-# merrimajeel_estimates_glm <- bind_cols(lapply(1:221, estimate_nest_counts_glm, 1000, merrimajeel))
-# saveRDS(merrimajeel_estimates_glm, file = "merrimajeel_estimates_glm.rds")
-merrimajeel_estimates_glm <- readRDS("merrimajeel_estimates_glm.rds")
-merrimajeel_estimates_glm_long <- gather(merrimajeel_estimates_glm)
-merrimajeel_estimates_glm_long$samples <- as.numeric(unlist(lapply(merrimajeel_estimates_glm_long$key, function(x) strsplit(x, "_")[[1]][2])))
-plot_nest_estimates(merrimajeel_estimates_glm_long, merrimajeel, 0.05)
+## see function in "nest_counting_functions.R" - argument description here:
+# crunch_it <- function(run_iters = F, save = F, # whether to re-run analysis/save data or just load and plot
+#                       colony_name, colony_data, # name of the colony (string) and loaded colony data
+#                       nboot = 1000, # number of bootstrap iterations for nest count estimates
+#                       smaller_sample = 5, num_draws = 3, # number of samples to take from each crowd ratio bin (from data load), repeated num_draws times
+#                       kfold_iters = 50, kfold_k = 10, # kfold iters and k for simulation
+#                       error_level = 0.05){ # manual counting error level to compare on plots
 
-## test out resampling with smaller sampling size
-kfold_samples <- rep(c(5, 6), 10)
-samples_actual_n <- kfold_samples * length(unique(merrimajeel$crowd_bin))
-# glm
-merrimajeel_kfold_estimates_glm <- lapply(X = kfold_samples,
-                                      FUN = estimate_nests_kfold, merrimajeel, 50, 10, 'glm')
-names(merrimajeel_kfold_estimates_glm) <- paste0(rep(1:10, each = 2),"_",samples_actual_n)
-plot_nest_estimates_kfold(merrimajeel_kfold_estimates_glm, merrimajeel, 0.05)
-# gam
-merrimajeel_kfold_estimates_gam <- lapply(X = kfold_samples,
-                                          FUN = estimate_nests_kfold, merrimajeel, 50, 10, 'gam')
-names(merrimajeel_kfold_estimates_gam) <- paste0(rep(1:10, each = 2),"_",samples_actual_n)
-plot_nest_estimates_kfold(merrimajeel_kfold_estimates_gam, merrimajeel, 0.05)
+## merrimajeel creek - lower lachlan river
+crunch_it(run_iters = T, save = T,
+          "merrimajeel", merrimajeel, 
+          nboot = 800, 
+          smaller_sample = 4, num_draws = 10,
+          kfold_iters = 20, kfold_k = 10,
+          error_level = 0.05)
+
+# block bank - lower lachlan river
+crunch_it(run_iters = T, save = T,
+          "blockb", blockb, 
+          nboot = 800, 
+          smaller_sample = 3, num_draws = 10,
+          kfold_iters = 20, kfold_k = 3,
+          error_level = 0.05)
+
+# zoo paddock - macquaries marches
+crunch_it(run_iters = T, save = T,
+          "maczoo", maczoo, 
+          nboot = 800, 
+          smaller_sample = 4, num_draws = 10,
+          kfold_iters = 20, kfold_k = 10,
+          error_level = 0.05)
+
+# eulimbah - lowbidgee
+crunch_it(run_iters = T, save = T,
+          "eulimbah", eulimbah, 
+          nboot = 800, 
+          smaller_sample = 3, num_draws = 3,
+          kfold_iters = 20, kfold_k = 3,
+          error_level = 0.05)
 
 
 
