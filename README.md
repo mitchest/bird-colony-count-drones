@@ -2,7 +2,7 @@
 
 - Data and code for an upcoming paper on monitoring and automated mapped of really large and complex bird colonies. 
 - Paper just about in review. Contact for more details or check out the results as is.
-- See ![this Google Earth Engine app](https://www.google.com/url?q=https://mitchest.users.earthengine.app/view/ibis-drone-count&sa=D&source=hangouts&ust=1545213512105000&usg=AFQjCNFgaIsMC0XPmuhbXKHulS7t0_-IHA) to explore some of the data
+- See [this Google Earth Engine app](https://www.google.com/url?q=https://mitchest.users.earthengine.app/view/ibis-drone-count&sa=D&source=hangouts&ust=1545213512105000&usg=AFQjCNFgaIsMC0XPmuhbXKHulS7t0_-IHA) to explore some of the data
 
 The basic concept is as such:
 - Most automated classificaiton algorithms focus on consistent targets with high contrast, but many biological phenomenon are not like this
