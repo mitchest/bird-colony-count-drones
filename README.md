@@ -1,7 +1,8 @@
-# Monitoring large and complex groups of animals via drones: nesting bird colonies as an example
+# Towards monitoring large and complex wildlife aggregations with drones
 
 - Data and code for an upcoming paper on monitoring and automated mapped of really large and complex bird colonies. 
 - Paper just about in review. Contact for more details or check out the results as is.
+- See ![this Google Earth Engine app](https://www.google.com/url?q=https://mitchest.users.earthengine.app/view/ibis-drone-count&sa=D&source=hangouts&ust=1545213512105000&usg=AFQjCNFgaIsMC0XPmuhbXKHulS7t0_-IHA) to explore some of the data
 
 The basic concept is as such:
 - Most automated classificaiton algorithms focus on consistent targets with high contrast, but many biological phenomenon are not like this
@@ -28,4 +29,4 @@ A small extract from one colony is below, to give a flavour of the study sites -
 - The mapped areas are then used - again using a small proportion of the maunally coutned nest data as training - to estimate the parameter of interest: the number of nests
 - We are trying to maximise the accuracy of the counts, and minimise the amount of manual effort
 - Note these reuslts are not finalised yet  
-![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_est.JPG)
+![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_est.png)
