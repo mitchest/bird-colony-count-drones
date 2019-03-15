@@ -3,6 +3,7 @@ library(MASS)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(foreign)
 #library(data.table)
 
 source("nest_counting_functions.R")
@@ -41,6 +42,21 @@ eulimbah_counts <- data.frame(ground = c(5,2,5,17,5,17,3,17,15,28,15,129),
                             drone = c(6,4,5,22,4,15,4,17,6,17,16,116))
 eulimbah_interval <- get_interval(eulimbah_counts$ground, merrimajeel_counts$drone)
 
+
+
+# nest mapping accuracy ---------------------------------------------------
+
+calc_mapping_accuracy(background = "nest_counts/accuracy_points/merrimajeel/back_pts_join.dbf",
+                      nests = "nest_counts/accuracy_points/merrimajeel/nest_pts_join.dbf")
+
+calc_mapping_accuracy(background = "nest_counts/accuracy_points/blockb/back_pts_join.dbf",
+                      nests = "nest_counts/accuracy_points/blockb/nest_pts_join.dbf")
+
+calc_mapping_accuracy(background = "nest_counts/accuracy_points/maczoo/back_pts_join.dbf",
+                      nests = "nest_counts/accuracy_points/maczoo/nest_pts_join.dbf")
+
+calc_mapping_accuracy(background = "nest_counts/accuracy_points/eulimbah/back_pts_join.dbf",
+                      nests = "nest_counts/accuracy_points/eulimbah/nest_pts_join.dbf")
 
                                 
 

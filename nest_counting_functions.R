@@ -270,3 +270,47 @@ crunch_it <- function(run_iters = F, save = F, # whether to re-run analysis/save
     invisible(plot_nest_estimates_kfold)
   }
 }
+
+calc_mapping_accuracy <- function(background, nests){
+  # build background points
+  back <- read.dbf(background, as.is = T)
+  back_df <- data.frame(map = back$gridcode,
+                        ref = 0)
+  # build nest points
+  nest <- read.dbf(nests, as.is = T)
+  nest_df <- data.frame(map = nest$gridcode,
+                        ref = 1)
+  # combine
+  cases <- as.data.frame(rbind(back_df, nest_df))
+  # make confusion matrix and print out
+  conf_mat <- table(cases$map, cases$ref)
+  print(conf_mat)
+  print(paste0("Overall: ", round(percentage_agreement(conf_mat),4)))
+  print(paste0("Row: ", row_error(conf_mat)))
+  print(paste0("Col: ", column_error(conf_mat)))
+  bootstrap_oa_ci(cases)
+}
+
+percentage_agreement <- function(conf_mat) {
+  sum(diag(conf_mat)) / sum(conf_mat) # xtab method quicker?
+}
+
+row_error <- function(conf_mat) {
+  round(1 - (diag(conf_mat) / apply(conf_mat, 1, sum)),4)
+}
+
+column_error <- function(conf_mat) {
+  round(1 - (diag(conf_mat) / apply(conf_mat, 2, sum)),4)
+}
+
+bootstrap_oa_ci <- function(cases) {
+  samp_dist <- replicate(n = 800, expr = {
+    cases <- sample_frac(cases, 1, TRUE)
+    conf_mat <- table(cases$map, cases$ref)
+    percentage_agreement(conf_mat)
+    }, simplify = T)
+  quants <- round(quantile(samp_dist, c(0.025, 0.5, 0.975)),4)
+  print(paste0("Bootstrap: ", quants[2], " (", quants[1], "-", quants[3], ")"))
+}
+
+
