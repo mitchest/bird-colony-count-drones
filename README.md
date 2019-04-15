@@ -1,13 +1,13 @@
-# Towards monitoring large and complex wildlife aggregations with drones
+# Monitoring large and complex wildlife aggregations with drones
 
-- Data and code for an upcoming paper on monitoring and automated mapped of really large and complex bird colonies. 
-- Paper just about in review. Contact for more details or [check out the pre-print here](https://doi.org/10.32942/osf.io/w247h).
+- Data and code for a forthcoming paper on monitoring and semi-automated mapping of really large and complex bird colonies. 
+- Paper accepted in *Methods in Ecology and Evolution* (April 11). Contact for more details or [check out the pre-print here](https://doi.org/10.32942/osf.io/w247h).
 - See [this Google Earth Engine app](https://mitchest.users.earthengine.app/view/ibis-drone-count) to explore some of the data
 
 The basic concept is as such:
-- Most automated classificaiton algorithms focus on consistent targets with high contrast, but many biological phenomenon are not like this
+- Most automated classification algorithms focus on consistent targets with high contrast, but many biological phenomenon are not like this
 - For example, many large breeding bird colonies are not like this (e.g. birds of different ages, nests of different ages that may be green/brown/white, nests that are on their own or in clumps of 5/10/50, empty or occupied nests, nests with eggs, birds by themselves, birds flying around, etc. etc.)
-- This approach focuses on using a remtoe sensing approach (via drone imagery) to map all of the targets of interest, and then subsequently using an algorithmic or modelling appraoch to estimate the parameter of interest (e.g. number of nests in our case)
+- This approach focuses on using a remote sensing approach (via drone imagery) to map all of the targets of interest, and then subsequently using an algorithmic or modeling approach to estimate the parameter of interest (e.g. number of nests in our case)
 - We demonstrate for 4 different colonies, ranging in size from ~20-30,000 to ~200,000 birds
 - The mapping is implemented in the Google Earth Engine, and modelling in R
 
@@ -21,12 +21,12 @@ A small extract from one colony is below, to give a flavour of the study sites -
 - All visible nests were counted, a small proportion of which is used for training image classifiers  
 ![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_dots.JPG)
 
-### Nest/bird classificaiton
+### Nest/bird classification
 - Nest material and birds classified  
 ![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_class.JPG)
 
 ### Nest count estimation
-- The mapped areas are then used - again using a small proportion of the maunally coutned nest data as training - to estimate the parameter of interest: the number of nests
+- The mapped areas are then used - again using a small proportion of the manually counted nest data as training - to estimate the parameter of interest: the number of nests
 - We are trying to maximise the accuracy of the counts, and minimise the amount of manual effort
-- Note these reuslts are not finalised yet  
+- Note these results are not finalised yet  
 ![](https://github.com/mitchest/bird-colony-count-drones/blob/master/readme/nest_est.png)
