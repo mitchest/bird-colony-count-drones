@@ -1,7 +1,9 @@
 # Monitoring large and complex wildlife aggregations with drones
 
 - Data and code for a forthcoming paper on monitoring and semi-automated mapping of really large and complex bird colonies. 
-- Paper accepted in *Methods in Ecology and Evolution* (April 11). Contact for more details or [check out the pre-print here](https://doi.org/10.32942/osf.io/w247h).
+- Forthcoming paper in *Methods in Ecology and Evolution* (May 2019):  
+  Lyons, M., K. Brandis, J. Wilshire, N. Murray, J. McCann, R. Kingsford, and C. Callaghan (2019). Monitoring large and complex wildlife aggregations with drones. *Methods in Ecology and Evolution*.   
+- Contact for more details or [check out the pre-print here](https://doi.org/10.32942/osf.io/w247h)
 - See [this Google Earth Engine app](https://mitchest.users.earthengine.app/view/ibis-drone-count) to explore some of the data
 
 The basic concept is as such:
